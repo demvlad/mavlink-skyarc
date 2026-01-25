@@ -1,0 +1,235 @@
+ <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAVLinkSkyArc — Адаптер телеметрии для «Небосвод»</title>
+    <meta name="description" content="Приложение для приёма данных MAVLink с дрона и их передачи в государственную систему идентификации БВС через платформу «Небосвод» (SkyArc).">
+    <meta name="author" content="[Ваше Имя или Название компании]">
+    
+    <!-- Подключаем ваши существующие стили -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключение шрифта Roboto для копирования стиля из приложения -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Дополнительные минимальные стили для стартовой страницы */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .main-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #2196F3;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            text-align: left;
+            padding: 0 20px;
+            color: #555;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 200px;
+            background: #f8f9fa;
+            padding: 25px 20px;
+            border-radius: 12px;
+            border-left: 5px solid #2196F3;
+            text-align: left;
+        }
+        
+        .feature h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+        }
+        
+        .btn-primary {
+            background: #2196F3;
+            color: white;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #1976D2;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #2196F3;
+            border: 2px solid #2196F3;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(33, 150, 243, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 25px;
+                margin: 20px auto;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="logo">🛰️</div>
+        <h1>MAVLinkSkyArc</h1>
+        <p class="tagline">Мост телеметрии MAVLink в государственную систему учёта БВС</p>
+        
+        <div class="description">
+            <p><strong>MAVLinkSkyArc</strong> — это специализированное приложение-адаптер, которое принимает телеметрию в формате MAVLink с вашего дрона и передаёт её в государственную систему идентификации и учёта беспилотных воздушных судов (БВС) через платформу <strong>«Небосвод» (SkyArc)</strong>.</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>📡 Приём MAVLink</h3>
+                <p>Подключение к автопилоту Pixhawk, Cube, полётным контроллерам и наземным станциям.</p>
+            </div>
+            <div class="feature">
+                <h3>⚡ Передача в «Небосвод»</h3>
+                <p>Надёжная отправка данных через защищённый API платформы SkyArc.</p>
+            </div>
+            <div class="feature">
+                <h3>📊 Соответствие требованиям</h3>
+                <p>Обеспечение передачи данных в госсистему в соответствии с актуальными регламентами.</p>
+            </div>
+        </div>
+        
+        <div class="cta-buttons">
+            <a href="https://github.com/ваш-логин/mavlinkskyarc" class="btn btn-primary" target="_blank">
+                📂 GitHub репозиторий
+            </a>
+            <a href="https://www.skyarc.ru/" class="btn btn-secondary" target="_blank">
+                🌐 Платформа «Небосвод»
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>Приложение разработано для операторов БВС, использующих платформу «Небосвод» для выполнения требований законодательства.</p>
+            <p class="copyright">© [Ваше Имя или Название компании], 2025. Все права защищены.</p>
+        </div>
+    </div>
+    
+    <!-- Ваши скрипты (если нужны) -->
+    <script src="script.js"></script>
+    
+    <script>
+        // Минимальный скрипт для интерактивности
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница MAVLinkSkyArc загружена');
+            
+            // Простая анимация для кнопок
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
