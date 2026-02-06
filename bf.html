@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция по настройке Betaflight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Основное содержание руководства -->
+    <main class="guide-content">
+        <header class="guide-header">
+            <h1>📚 Прошивка и настройка Betaflight</h1>
+        </header>
+
+        <!-- Глава 1 -->
+        <section id="chapter1" class="chapter">
+            <div class="step">
+                <h3><span class="step-number">1</span>Запуск Betaflight Configurator</h3>
+                <p>
+                  <a href="http:\\app.betaflight.com">Откройте Online Betaflight Configurator. </a>
+                </p>
+                <p>Подключите полетный контроллер</p>
+                <p>Перейдите в раздел Firmware flasher</p>
+            </div>
+            <div class="step">
+                <h3><span class="step-number">2</span> Прошивка Betaflight</h3>
+                <p>Выберите свой полетный контроллер в списке.</p>
+                <p>Выберите последнюю Release версию firmware.</p>
+                <p>Укажите необходимые опции.</p>
+                <p>Выберите MAVLINK в качестве Radio Protocol и Telemetry Protocol.</p>
+                <p>Загрузите firmware (online).</p>
+                <p>Прошейте firmware.</p>
+                <div class="image-container">
+                    <img src="images/bf_flash.jpg" 
+                         alt="Прошивка Beteflight firmware" 
+                         class="guide-image image-50">
+                    <p class="image-caption">Рис. 1:Прошивка Beteflight firmware</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3><span class="step-number">3</span> Настройка порта</h3>
+                <p>Войдите в конфигуратор после прошивки BF firmware.</p>
+                <p>Перейдите на закладку Ports.</p>
+                <p>Для порта ELRS-приемника включите режим Serial-Rx и установите MAVLINK в качестве Telemetry Output</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/bf_port.jpg" 
+                             alt="Настройка порта" 
+                             class="guide-image image-50">
+                        <p class="image-caption">Рис. 2: Настройка порта</p>
+                    </div>
+                </div>
+                <div class="tip">
+                    <strong>💡 Совет:</strong> Оставьте скорость передачи телеметрии AUTO.
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3><span class="step-number">4</span> Настройка приемника</h3>
+                <p>Перейдите на закладку Receiver.</p>
+                <p>Установите Receiver mode - Serial, Serial receiver provider - MAVLINK, включите телеметрию</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/bf_receiver.jpg" 
+                             alt="Настройка приемника" 
+                             class="guide-image image-50">
+                        <p class="image-caption">Рис. 3: Настройка приемника</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Навигационные кнопки -->
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn">На главную страницу</a>
+        </div>
+    </main>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Подсветка текущего раздела при прокрутке
+        window.addEventListener('scroll', function() {
+            const chapters = document.querySelectorAll('.chapter');
+            const scrollPosition = window.scrollY + 100;
+            
+            chapters.forEach(chapter => {
+                const chapterTop = chapter.offsetTop;
+                const chapterHeight = chapter.clientHeight;
+                const chapterId = chapter.getAttribute('id');
+                
+                if(scrollPosition >= chapterTop && scrollPosition < chapterTop + chapterHeight) {
+                    document.querySelectorAll('.toc a').forEach(link => {
+                        link.style.fontWeight = link.getAttribute('href') === `#${chapterId}` ? 'bold' : 'normal';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
