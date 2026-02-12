@@ -10,9 +10,31 @@
     <!-- Основное содержание руководства -->
     <main class="guide-content">
         <header class="guide-header">
-            <h1>📚 Настройка ExpressLRS</h1>
+            <h1>📚 Настройка аппаратуры ExpressLRS</h1>
         </header>
-
+        <section id="chapter1" class="chapter">
+            <div class="step">
+                <h3><span class="step-number">0</span>Предварительная настройка ExpressLRS Backpack</h3>
+                <div class="warning">
+                    <strong>⚠️ Внимание:</strong> <p>Рекомендуется работа ExpressLRS Backpack в режиме подключения к внешней точке доступа WIFI на смартфоне. Это обеспечивает надежную передачу телеметрии.</p>
+                    <p>Использование Backpack в качестве точки доступа WIFI с подключением к ней смартфона возможна, но требует тщательной проверки стабильности приема телеметрии по WIFI и ее отправки через интернет!</p>
+                </div>
+                <p>При прошивке Backpack рекомендуется установить настройки для подключения к внешней сети - точки доступа на вашем смартфоне</p>
+                <div class="image-container">
+                    <img src="images\back_pack_config.jpg"
+                         alt="Настройка WIFI"
+                         class="guide-image image-30">
+                    <p class="image-caption">Настройка WIFI при прошивке Backpack</p>
+                </div>
+                <p>Также это можно сделать позднее через web-интерфейс Backpack</p>
+                <div class="image-container">
+                    <img src="images\back_pack_web.jpg"
+                         alt="Настройка WIFI"
+                         class="guide-image image-30">
+                    <p class="image-caption">Настройка Backpack через web-интерфейс</p>
+                </div>
+            </div>
+        </section>
         <!-- Глава 1 -->
         <section id="chapter1" class="chapter">
             <div class="step">
@@ -24,48 +46,48 @@
                 <h3><span class="step-number">2</span> Настройка режима связи</h3>
                 <p>Установите режим связи (Link Mode) - MAVLink</p>
                 <div class="image-container">
-                    <img src="images\elrs-link-mode.jpg" 
-                         alt="Настройка режима связи" 
+                    <img src="images\elrs-link-mode.jpg"
+                         alt="Настройка режима связи"
                          class="guide-image image-30">
-                    <p class="image-caption">Рис. 1:Настройка режима связи MAVLink</p>
+                    <p class="image-caption">Настройка режима связи MAVLink</p>
                 </div>
                 <div class="warning">
                     <strong>⚠️ Внимание:</strong> Отключите приемник во время данной операции
                 </div>
             </div>
-            
+
             <div class="step">
                 <h3><span class="step-number">3</span> Настройка трансляции телеметрии в Backpack</h3>
                 <p>Войдите в настройку Backpack.</p>
                 <div class="image-container">
                     <div>
-                        <img src="images\elrs-backpack.jpg" 
-                             alt="Настройка порта" 
+                        <img src="images\elrs-backpack.jpg"
+                             alt="Настройка порта"
                              class="guide-image image-30">
-                        <p class="image-caption">Рис. 2: Вход в настройку Backpack</p>
+                        <p class="image-caption">Вход в настройку Backpack</p>
                     </div>
                 </div>
                 <p>Установите режим телеметрии WiFI</p>
                 <div class="image-container">
                     <div>
-                        <img src="images\elrs-wifi.jpg" 
-                             alt="Настройка порта" 
+                        <img src="images\elrs-wifi.jpg"
+                             alt="Настройка порта"
                              class="guide-image image-30">
-                        <p class="image-caption">Рис. 3: Настройка телеметрии</p>
+                        <p class="image-caption">Настройка телеметрии</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="step">
                 <h3><span class="step-number">4</span> Настройка приемника</h3>
                 <p>Перейдите в главное меню настройки ELRS.</p>
                 <p>Войдите в меню Other Devices</p>
                 <div class="image-container">
                     <div>
-                        <img src="images\elrs-other.jpg" 
-                             alt="Вход в настройку присоединенных устройств" 
+                        <img src="images\elrs-other.jpg"
+                             alt="Вход в настройку присоединенных устройств"
                              class="guide-image image-30">
-                        <p class="image-caption">Рис. 4: Вход в настройку присоединенных устройств</p>
+                        <p class="image-caption">Вход в настройку присоединенных устройств</p>
                     </div>
                 </div>
                 <div class="warning">
@@ -74,19 +96,19 @@
                 <p>Выберите приемник (RM RP1)</p>
                 <div class="image-container">
                     <div>
-                        <img src="images\elrs-recv.jpg" 
-                             alt="Настройка приемника" 
+                        <img src="images\elrs-recv.jpg"
+                             alt="Настройка приемника"
                              class="guide-image image-30">
-                        <p class="image-caption">Рис. 5: Вход в настройку приемника</p>
+                        <p class="image-caption">Вход в настройку приемника</p>
                     </div>
                 </div>
                 <p>Выберите протокол связи MAVLink</p>
                 <div class="image-container">
                     <div>
-                        <img src="images\elrs-recv-protocol.jpg" 
-                             alt="Настройка протокола приемника" 
+                        <img src="images\elrs-recv-protocol.jpg"
+                             alt="Настройка протокола приемника"
                              class="guide-image image-30">
-                        <p class="image-caption">Рис. 6: Настройка протокола приемника MAVLink</p>
+                        <p class="image-caption">Настройка протокола приемника MAVLink</p>
                     </div>
                 </div>
             </div>
@@ -105,7 +127,7 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if(targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
@@ -120,12 +142,12 @@
         window.addEventListener('scroll', function() {
             const chapters = document.querySelectorAll('.chapter');
             const scrollPosition = window.scrollY + 100;
-            
+
             chapters.forEach(chapter => {
                 const chapterTop = chapter.offsetTop;
                 const chapterHeight = chapter.clientHeight;
                 const chapterId = chapter.getAttribute('id');
-                
+
                 if(scrollPosition >= chapterTop && scrollPosition < chapterTop + chapterHeight) {
                     document.querySelectorAll('.toc a').forEach(link => {
                         link.style.fontWeight = link.getAttribute('href') === `#${chapterId}` ? 'bold' : 'normal';
