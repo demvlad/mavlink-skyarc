@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция по настройке Betaflight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Основное содержание руководства -->
+    <main class="guide-content">
+        <header class="guide-header">
+            <h1>📚 Проверка системы</h1>
+        </header>
+        <p>Страница в разработке</p>
+
+         <!-- Навигационные кнопки -->
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn">На главную страницу</a>
+        </div>
+    </main>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Подсветка текущего раздела при прокрутке
+        window.addEventListener('scroll', function() {
+            const chapters = document.querySelectorAll('.chapter');
+            const scrollPosition = window.scrollY + 100;
+
+            chapters.forEach(chapter => {
+                const chapterTop = chapter.offsetTop;
+                const chapterHeight = chapter.clientHeight;
+                const chapterId = chapter.getAttribute('id');
+
+                if(scrollPosition >= chapterTop && scrollPosition < chapterTop + chapterHeight) {
+                    document.querySelectorAll('.toc a').forEach(link => {
+                        link.style.fontWeight = link.getAttribute('href') === `#${chapterId}` ? 'bold' : 'normal';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
