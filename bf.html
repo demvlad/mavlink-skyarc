@@ -33,22 +33,22 @@
                 <p>Загрузите firmware (online).</p>
                 <p>Прошейте firmware.</p>
                 <div class="image-container">
-                    <img src="images/bf_flash.jpg" 
-                         alt="Прошивка Beteflight firmware" 
+                    <img src="images/bf_flash.jpg"
+                         alt="Прошивка Beteflight firmware"
                          class="guide-image image-50">
                     <p class="image-caption">Рис. 1:Прошивка Beteflight firmware</p>
                 </div>
             </div>
-            
+
             <div class="step">
-                <h3><span class="step-number">3</span> Настройка порта</h3>
+                <h3><span class="step-number">3</span> Настройка порта UART</h3>
                 <p>Войдите в конфигуратор после прошивки BF firmware.</p>
                 <p>Перейдите на закладку Ports.</p>
                 <p>Для порта ELRS-приемника включите режим Serial-Rx и установите MAVLINK в качестве Telemetry Output</p>
                 <div class="image-container">
                     <div>
-                        <img src="images/bf_port.jpg" 
-                             alt="Настройка порта" 
+                        <img src="images/bf_port.jpg"
+                             alt="Настройка порта"
                              class="guide-image image-50">
                         <p class="image-caption">Рис. 2: Настройка порта</p>
                     </div>
@@ -57,28 +57,35 @@
                     <strong>💡 Совет:</strong> Оставьте скорость передачи телеметрии AUTO.
                 </div>
             </div>
-            
+
             <div class="step">
                 <h3><span class="step-number">4</span> Настройка приемника</h3>
                 <p>Перейдите на закладку Receiver.</p>
                 <p>Установите Receiver mode - Serial, Serial receiver provider - MAVLINK, включите телеметрию</p>
                 <div class="image-container">
                     <div>
-                        <img src="images/bf_receiver.jpg" 
-                             alt="Настройка приемника" 
+                        <img src="images/bf_receiver.jpg"
+                             alt="Настройка приемника"
                              class="guide-image image-50">
                         <p class="image-caption">Рис. 3: Настройка приемника</p>
                     </div>
                 </div>
             </div>
             <div class="warning">
-                    <strong>⚠️ Внимание:</strong> В текущей реализации MAVLink режима ExpressLRS, частота обновления управлляющих сигналов (RC) составляет около 100Hz. Это нужно учитывать при настройке фильтров RC.
+                    <strong>⚠️ Внимание:</strong> В текущей реализации MAVLink режима ExpressLRS, частота обновления управляющих сигналов (RC) по результатам тестов составляет около 100Hz (отличается от частоты, задаваемой в настройках ELRS пульта управления - 150, 250Hz,...  ).
+                    Это нужно учитывать при выборе пресэтов (настройки фильтров) канала управления в Betaflight конфигураторе.
             </div>
         </section>
 
+        <div class="description">
+            <p>Настройки Betaflight по умолчанию обеспечивают функционирование MAVLink.</p>
+            <p>Проверка и более тонкая настройка, позволяющая снизить нагрузку на радиоканал телеметрии, требует использования приложения <a href="https://blackbox.betaflight.com">Betaflight Blackbox Explorer</a>,
+            установки отладочного режима логирования DEBUG_TELEMETRY_MAVLINK и команд CLI.</p>
+        </div>
+
         <!-- Навигационные кнопки -->
         <div class="nav-buttons">
-            <a href="index.html" class="nav-btn">На главную страницу</a>
+            <a href="index.html#setup_manual" class="nav-btn">На главную страницу</a>
         </div>
     </main>
 
@@ -89,7 +96,7 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if(targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
@@ -104,12 +111,12 @@
         window.addEventListener('scroll', function() {
             const chapters = document.querySelectorAll('.chapter');
             const scrollPosition = window.scrollY + 100;
-            
+
             chapters.forEach(chapter => {
                 const chapterTop = chapter.offsetTop;
                 const chapterHeight = chapter.clientHeight;
                 const chapterId = chapter.getAttribute('id');
-                
+
                 if(scrollPosition >= chapterTop && scrollPosition < chapterTop + chapterHeight) {
                     document.querySelectorAll('.toc a').forEach(link => {
                         link.style.fontWeight = link.getAttribute('href') === `#${chapterId}` ? 'bold' : 'normal';
