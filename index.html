@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAVLinkSkyArc — Адаптер телеметрии для «Небосвод»</title>
-    <meta name="description" content="Приложение для приёма данных MAVLink с дрона и их передачи в государственную систему идентификации БВС через платформу «Небосвод».">
+    <meta name="description" content="Приложение для приёма данных MAVLink с дрона и их передачи в Государственную систему идентификации БВС через платформу «Небосвод».">
     <meta name="author" content="[Демидов В.В.]">
 
     <!-- Подключаем ваши существующие стили -->
@@ -15,7 +15,7 @@
     <div class="main-container">
         <div class="logo">🚁️📡</div>
         <h1>MAVLinkSkyArc</h1>
-        <p class="tagline">Мост телеметрии MAVLink в государственную систему идентификации БВС</p>
+        <p class="tagline">Мост телеметрии MAVLink в Государственную систему идентификации БВС</p>
         <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc" class="nav-btn">Скачать MAVLinkSkyArc на RuStore</a>
         <div class="contact-item">
             <span class="contact-icon">📧</span>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="description">
-            <p>MAVLinkSkyArс: Android приложение для сбора MAVLink телеметрии БВС и передачи данных в государственную систему идентификации БВС
+            <p><b>MAVLinkSkyArс:</b> Android приложение для сбора MAVLink телеметрии БВС и передачи данных в Государственную систему идентификации БВС
                                 <a href="http://publication.pravo.gov.ru/document/0001202412030025">
                                   (ПП РФ №1701 30.11.2024)
                                 </a>
@@ -38,13 +38,13 @@
 
         <div class="features">
             <div class="feature">
-                <h3>📡 Приём MAVLink телеметрии по сети WiFi</h3>
+                <h3>📡 Приём MAVLink телеметрии по сети Wi-Fi</h3>
                 <p>Подключение к прошивкам дронов <a href="http://www.betaflight.com/">Betaflight</a>,
                    INAV, ArduPilot, PX4 с помощью аппаратуры управления <a href="http://www.expresslrs.com/">ExpressLRS.</a></p>
             </div>
             <div class="feature">
                 <h3>⚡ Идентификация полета БВС</h3>
-                <p>Отправка полетных параметров в государственную систему идентификации БВС через платформу <a href="https://www.skyarc.ru/">"Небосвод".</a></p>
+                <p>Отправка полетных параметров в Государственную систему идентификации БВС через платформу <a href="https://www.skyarc.ru/">"Небосвод".</a></p>
             </div>
             <div class="feature">
                 <h3>📊 Индикация параметров полета</h3>
@@ -53,29 +53,66 @@
         </div>
         <h1>📖 Общая информация</h1>
         <div class="description">
-            <p>Программа принимает полетные параметры по WiFi на UDP порт 14550 по протоколу передачи полетных данных MAVLink и позволяет транслировать их в гос. систему идентификации БВС.</p>
-            <p>Для получения информации от дрона используется аппаратура управлния <a href="http://www.expresslrs.com/">ExpressLRS</a> в режиме <a href="https://www.expresslrs.org/software/mavlink/">MAVLink телеметрии.</a></p>
-            <p>Также возможно использование других устройств, передающих MAVLink телеметрию по WIFI.</p>
-            <p>Поддерживаются прошивки дронов: <a href="http://www.betaflight.com/">Betaflight</a>, INAV, ArduPilot, PX4.</p>
-            <p>Минимальная версия ExpressLRS - Transmitter/receiver firmware: 3.5.0, TX Backpack firmware: 1.5.0</p>
-            <p>Минимальная версия Betaflight: <a href="https://github.com/betaflight/betaflight/releases">2025.12.1</a></p>
+            <p>Программа <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a> принимает полетные параметры по Wi-Fi на UDP порт 14550 по протоколу передачи полетных данных MAVLink и позволяет транслировать их в Государственную систему идентификации полетов БВС.</p>
+            <p><u><b>Поддерживаются прошивки дронов</b></u>: <a href="http://www.betaflight.com/">Betaflight</a>, INAV, ArduPilot, PX4.</p>
+            <h3>Для получения информации от дрона может использоваться аппаратура управлния <a href="http://www.expresslrs.com/">ExpressLRS</a> в режимах:</h3>
+            <ul>
+                <li><a href="https://www.expresslrs.org/software/mavlink/">Трансляция MAVLink телеметрии по Wi-Fi;</a></li>
+                <li><a href="https://www.expresslrs.org/software/backpack-telemetry/">Передача CRSF телеметрии по техноглогии ESP-NOW</a> с ретрансляцией ее в формат MAVLink Wi-Fi при помощи дополнительной <a href="https://github.com/demvlad/ESP-NOW-to-MAVLink-UDP-Bridge">платы ESP32.</a></li>
+            </ul>
+            <p>
+                В этих режимах аппаратура ExpressLRS получает телеметрию с квадрокоптера и раздает ее по WiFi по протоколу MAVLink на UDP порт 14550,
+                что позволяет подключать компьютерные программы <b>MissionPlanner</b>, <b>QGroundControl</b> (поддерживаемые специальными плагинами <a href="https://www.skyarc.ru/">"Небосвод"</a> для идентификации БВС)
+                и <i>Android</i> программу <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a>.
+            </p>
+            <p>Также возможно использование других устройств, передающих MAVLink телеметрию по Wi-Fi.</p>
+
             <p>Передача телеметрии в Государственную систему идентификации БВС требует
-                <a href="https://www.skyarc.ru/"> авторизации в системе "Небосвод"</a> и наличия у БВС регистрационного номера.
+                <a href="https://www.skyarc.ru/"> авторизации в системе "Небосвод"</a> и наличия у БВС <i>регистрационного номера</i>.
             </p>
-            <p> Для работы приложения MAVLinkSkyArc необходима специальная настройка прошивки дрона и аппаратуры управления ExpressLRS для работы в режиме <a href="https://www.expresslrs.org/software/mavlink/"> MAVLink-ELRS. </a>
-                В этом режиме аппаратура ExpressLRS получает телеметрию с квадрокоптера и раздает ее по WiFi по протоколу MAVLink на UDP порт 14550,
-                что позволяет подключать это приложение, а также другие программы Ground Control Station типа MissionPlanner, QGroundControl (поддерживаемые специальными плагинами от <a href="https://www.skyarc.ru/">"Небосвод"</a> для идентификации БВС).
+            <p> Для работы приложения <b>MAVLinkSkyArc</b> необходима специальная настройка прошивки дрона и аппаратуры управления ExpressLRS для работы в режиме <a href="https://www.expresslrs.org/software/mavlink/"> MAVLink-ELRS</a>
+                или <a href="https://www.expresslrs.org/software/backpack-telemetry/">CRSF->ESP-NOW->MAVLink.</a>
             </p>
-            <p>Краткая инструкция по настройке режима MAVLink-ELRS для всех вышеперечисленных прошивок приведена в <a href="https://www.expresslrs.org/software/mavlink/"> руководстве ExpressLRS. </a></p>
-            <p>Далее приведено полное описание настройки аппаратуры и прошивки <a href="http://www.betaflight.com/">Betaflight</a> для режима MAVLink-ELRS.</p>
         </div>
 
-        <!-- Оглавление -->
+        <div class="description">
+            <p><b>💡 Требования для режима MAVLink-ELRS</b></p>
+            <p><u>Поддерживаются прошивки:</u></p>
+            <ul>
+                <li><a href="http://www.betaflight.com/">Betaflight</a>, начиная с версии <a href="https://github.com/betaflight/betaflight/releases">2025.12.1</a></li>
+                <li>INAV</li>
+                <li>ArduPilot</li>
+                <li>PX4</li>
+            </ul>
+            <p><u>Минимальная версия ExpressLRS</u>
+                <p>Transmitter/receiver firmware: 3.5.0</p>
+                <p>TX Backpack firmware: 1.5.0</p>
+            <p>Инструкция по настройке режима для прошивок <a href="http://www.betaflight.com/">Betaflight</a>, INAV, ArduPilot, PX4 приведена в <a href="https://www.expresslrs.org/software/mavlink/"> руководстве ExpressLRS.</a></p>
+            <p>Далее приведено полное описание настройки аппаратуры и прошивки <a href="http://www.betaflight.com/">Betaflight</a> для режима MAVLink-ELRS.</p>
+        </div>
         <nav class="toc">
-            <h1 id="setup_manual">📖 Настройка режима MAVLink-ELRS</h1>
+            <h2 id="setup_manual">📖 Настройка режима MAVLink-ELRS</h2>
             <ul>
                 <li><a href="bf.html">1. Установка и настройка Betaflight</a></li>
                 <li><a href="elrs.html">2. Настройка ExpressLRS</a></li>
+                <li><a href="checking.html">3. Проверка работоспособности</a></li>
+            </ul>
+        </nav>
+
+        <div class="description">
+            <p><b>💡 Требования для режима CRSF->ESP-NOW->MAVLink</b></p>
+            <div class="warning">
+                <strong>⚠️ Внимание:</strong> В настоящее время только прошивка <a href="http://www.betaflight.com/">Betaflight</a> имеет расширенную (Extended GPS frame) информацию CRSF телеметрии, достаточную для системы идентификации полета БВС.
+                        И пока это реализовано только в его крайней "Developed" версии. В Release это ожидается в версии 2026.6. Текущий 2025.12 релиз Betaflight, прошивка INAV не могут быть использованы!
+            </div>
+            <p>Для ретрансляции CRSF ESP-NOW телеметрии от аппаратуры ELRS в Wi-Fi раздачу по протоколу MAVLink необходима <b>дополнительная плата ESP32</b> со специальным ПО.</p>
+            <p>Далее приведено полное описание настройки аппаратуры и прошивки <a href="http://www.betaflight.com/">Betaflight</a> для режима CRSF->ESP-NOW->MAVLink.</p>
+        </div>
+        <nav class="toc">
+            <h2 id="setup_manual">📖 Настройка режима CRSF->ESP-NOW->MAVLink</h2>
+            <ul>
+                <li><a href="bf_crsf.html">1. Прошивка и настройка Betaflight</a></li>
+                <li><a href="esp32-.html">2. Прошивка и настройка платы ESP32</a></li>
                 <li><a href="checking.html">3. Проверка работоспособности</a></li>
             </ul>
         </nav>
@@ -94,13 +131,13 @@
                 <li>📋 Журнал</li>
                 <li>ℹ️ О программе</li>
             </ul>
-            <h3>Строку состояния, показывающюю исправность элементов, необходимых для приема телеметрии от БВС и трансляции ее в гос систему идентификации:</h3>
+            <h3>Строку состояния, показывающюю исправность элементов, необходимых для приема телеметрии от БВС и трансляции ее в Государственную систему идентификации:</h3>
             <ul>
                 <li>🌐 Поключение к интернет</li>
                 <li>🔐 Авторизация в системе "Небосвод"</li>
                 <li>🔌 Прием смартфоном данных телеметрии по WiFi</li>
                 <li>🛰️ Захват спутников (GPS Fix)</li>
-                <li>✈️ Трансляция полетных параметров в гос систему - разрешение на полет</li>
+                <li>✈️ Трансляция полетных параметров в систему идентификации - разрешение на полет</li>
             </ul>
             <div class="image-container">
                     <img src="images/about.jpg"
@@ -141,17 +178,17 @@
             <p>⚠️ Для надежной работы, в том числе и в фоновом режиме, отключите энергосбережение как в самой программе (запрашивается при первом запуске), так и в общих настройках Android!</p>
         </div>
         <div class="warning">
-            <p>⚠️ Рекомендуется использование режима с подключением ELRS аппаратуры к точке доступа WIFI на смартфоне.</p>
-            <p>⚠️ Обязательно проверяйте стабильность приема данных телеметрии по WIFI перед началом полета!</p>
+            <p>⚠️ Рекомендуется использование режима с подключением ELRS аппаратуры к точке доступа Wi-Fi на смартфоне.</p>
+            <p>⚠️ Обязательно проверяйте стабильность приема данных телеметрии по Wi-Fi перед началом полета!</p>
         </div>
         </div>
         <section id="chapter1" class="chapter">
             <div class="step">
                 <h3><span class="step-number">1</span>Запуск аппаратуры и программы</h3>
                 <ul>
-                    <li>Включите на смартфоне точку доступа WIFI, настроенную для подключения к ней Backpack ExpressLRS</li>
+                    <li>Включите на смартфоне точку доступа Wi-Fi, настроенную для подключения к ней Backpack ExpressLRS</li>
                     <li>Включите аппаратуру ExpressLRS</li>
-                    <li>Проверьте подключение аппаратуры к точке доступа WIFI</li>
+                    <li>Проверьте подключение аппаратуры к точке доступа Wi-Fi</li>
                     <li>Включите питание дрона</li>
                     <li>Запустите приложение MAVLinkSkyArc</li>
                 </ul>
@@ -172,12 +209,12 @@
             </div>
 
             <div class="step">
-                <h3><span class="step-number">3</span> Включение трансляции параметров в гос систему идентификации</h3>
+                <h3><span class="step-number">3</span> Включение трансляции параметров в Государственную систему идентификации</h3>
                 <ul>
                     <li>Перейдите на страницу "✈️ Полет".</li>
                     <li>Введите учетный номер БВС</li>
                     <li>При наличии всех необходимых условий кнопка управления будет активной, с надписью "✅Система исправна! 👇Нажми для полета!". В противном случае кнопка будет заблокирована с надписью "❌Система не готова! 🛑Полет запрещен!"</li>
-                    <li>Нажмите на кнопку управления. Начнется трансляция параметров полета в гос систему идентификации. Кнопка изменит цвет на зеленый, с надписью "✈️✅Полет разрешен! 📡Трансляция данных!".</li>
+                    <li>Нажмите на кнопку управления. Начнется трансляция параметров полета в систему идентификации. Кнопка изменит цвет на зеленый, с надписью "✈️✅Полет разрешен! 📡Трансляция данных!".</li>
                     <li>В строке состояния появится разрешение на полет ✈️✅</li>
                     <li>Выполните полет. В случае отказов трансляции в процессе полета на кнопке управления отображается сообщение "⚠Отказ трансляции! 👎Заверши полет!" </li>
                     <li>По завершению полета отключите трансляцию параметров нажатием на кнопку управления</li>

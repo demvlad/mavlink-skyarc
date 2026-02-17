@@ -407,9 +407,9 @@
             padding: 12px;
             background: rgba(33, 150, 243, 0.05);
             border-radius: 8px;
-            width: 30%;
+            width: fit-content;
             text-align: center;
-            margin: 0 auto;
+            margin: 10px auto;
         }
 
         .contact-icon {
