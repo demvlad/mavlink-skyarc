@@ -3,20 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструкция по настройке ESP32</title>
+    <title>Инструкция по настройке ExpressLRS</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Основное содержание руководства -->
     <main class="guide-content">
         <header class="guide-header">
-            <h1>📚 Настройка ESP32</h1>
+            <h1>📚 Настройка аппаратуры ExpressLRS</h1>
         </header>
-        <div class="description">
-            <p><a href="https://github.com/demvlad/ESPNow-to-MAVLink-UDP-Bridge">Прошивка ESP32 находится на github</a></p>
-            <p>Используйте Pre-release  2.1.0</p>
-            <p>Подробное описание находится в процессе разработки</p>
-        </div>
+        <!-- Глава 1 -->
+        <section id="chapter1" class="chapter">
+            <div class="step">
+                <h3><span class="step-number">1</span>Включение ELRS TX</h3>
+                <p>Включите пульт ELRS</p>
+                <p>Войдите в меню ELRS setup</p>
+            </div>
+
+            <div class="step">
+                <h3><span class="step-number">2</span> Настройка трансляции телеметрии в Backpack</h3>
+                <p>Войдите в настройку Backpack.</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images\elrs-backpack.jpg"
+                             alt="Настройка порта"
+                             class="guide-image image-30">
+                        <p class="image-caption">Вход в настройку Backpack</p>
+                    </div>
+                </div>
+                <p>Установите режим телеметрии ESP-NOW</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images\elrs-espnow.jpg"
+                             alt="Настройка порта"
+                             class="guide-image image-30">
+                        <p class="image-caption">Настройка телеметрии</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Навигационные кнопки -->
         <div class="nav-buttons">
