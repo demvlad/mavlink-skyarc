@@ -7,16 +7,98 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Основное содержание руководства -->
     <main class="guide-content">
         <header class="guide-header">
-            <h1>📚 Настройка ESP32</h1>
+            <h1>🛠 Прошивка и настройка платы ESP32</h1>
         </header>
         <div class="description">
-            <p><a href="https://github.com/demvlad/ESPNow-to-MAVLink-UDP-Bridge">Прошивка ESP32 находится на github</a></p>
-            <p>Используйте Pre-release  2.1.0</p>
-            <p>Подробное описание находится в процессе разработки</p>
+            <p>Для ретрансляции пакетов CRSF ESP-NOW телеметрии от пульта ExpressLRS в MAVLink телеметрию по UDP Wi-Fi необходима плата ESP32 со специальной прошивкой.</p>
+            <p><a href="https://github.com/demvlad/ESPNow-to-MAVLink-UDP-Bridge">Прошивка ESP32 находится в открытом репозитории GitHub.</a></p>
+            <p>На текущий момент прошивка успешно собирается и проверена на плате типа ESP32-DevKitC V1(esp32dev) - ESP2CH340TYPE-С30, стоимостью 400руб на Ozon.</p>
+            <p>Для других типов плат ESP32 - просьба делать сборку прошивки из исходных файлов проекта и проверку работы самостоятельно. Репозиторий проекта на GitHub открыт для Ваших доработок. Краткая инструкция по Git прилагается <a href="https://github.com/demvlad/ESPNow-to-MAVLink-UDP-Bridge">на закладке Contributing</a></p>
         </div>
+        <section id="chapter1" class="chapter">
+            <h2>📚 Заливка прошивки в плату ESP32</h2>
+            <div class="step">
+                <h3><span class="step-number">1</span>Скачайте файл прошивки с GitHub</h3>
+                <p>В разделе <a href="https://github.com/demvlad/ESPNow-to-MAVLink-UDP-Bridge/releases">release</a> репозитория проекта скачайте крайнюю версию прошивки (2.1.0 Pre release на текущий момент) - файл esp32_.elf</p>
+            </div>
+            <div class="step">
+                <h3><span class="step-number">2</span> Скачайте утилиту для прошивки платы ESP32</h3>
+                <p>Утилиту espflash для прошивки платы можно загрузить <a href="https://github.com/esp-rs/espflash/releases">здесь</a></p>
+            </div>
+            <div class="step">
+                <h3><span class="step-number">3</span> Прошивка платы ESP32</h3>
+                <p>Установите драйвера для платы (CH340 в моем случае).</p>
+                <p>Подключите плату ESP32 к компьютеру. В Диспетчере устрйств найдите какой COM порт она использует.</p>
+                <p>Скопируте утилиту espflash и файл прошивки в одну директорию. Запустите командную строку cmd, перейдите в командной строке в этот директорий.</p>
+                <p>Залейте прошивку в плату командой: <i>espflash COMn файл</i></p>
+                <p>Где: <i>файл</i> - полное имя файла прошивки, <i>COMn</i> - <i>n</i> замените на номер порта в системе, например - <i>COM5</i>.</p>
+            </div>
+        </section>
+        <section id="chapter2" class="chapter">
+            <h2>📚 Настройка прошивки</h2>
+            <div class="step">
+                <h3><span class="step-number">1</span>Определение MAC адреса аппаратуры ELRS</h3>
+                <p>Для настройки прошивки необходимо знание MAC адреса аппаратуры TX(пульта) ELRS, который определяется Binding-фразой.</p>
+                <p>Для определения MAC адреса зайдите в Web-конфигуратор TX ELRS и запишите MAC адрес. Переведите числа в 16-ричный формат.</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/phrase.jpg"
+                             class="guide-image">
+                        <p class="image-caption">MAC адрес аппаратуры</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <h3><span class="step-number">2</span>Вход в web-конфигуратор прошивки платы ESP32</h3>
+                <p>Включите питание платы ESP32.</p>
+                <p>После включения создается точка доступа Wi-Fi с именем <b>mavlink</b> и паролем для входа <b>12345678</b>.</p>
+                <p>Подключитесь к точке доступа и откройте в интернет браузере страницу <b>http://192.168.4.1</b> конфигуратора.</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/mac-address.jpg"
+                             class="guide-image">
+                        <p class="image-caption">Конфигуратор</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <h3><span class="step-number">3</span> Установка MAC адреса </h3>
+                <p>На странице "MAC-Address" конфигуратора введите MAC-адрес передатчика TX ELRS и сохраните его нажатием кнопки "Save MAC"</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/mac-address.jpg"
+                             class="guide-image">
+                        <p class="image-caption">Установка MAC адреса</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <h3><span class="step-number">4</span> Настройка точки доступа ESP32</h3>
+                <p>Перейдите на страницу "WIFI" конфтгуратора.</p>
+                <p>Установите режим "WiFi client", для подключения платы к внешней точке доступа на смартфоне (2.4ГГц), которую нужно предварительно настроить.</p>
+                <p>Введите SSID и пароль внешней точки доступа и нажмите кнопку "Save WiFi".</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/wifi-client.jpg"
+                             class="guide-image">
+                        <p class="image-caption">Настройка подключения к Wi-Fi смартфона</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <h3><span class="step-number">5</span> Завершение</h3>
+                <p>После выполнения всех пунктов настройка завершена.</p>
+                <div class="warning">
+                    <p></p>
+                    <p>⚠️ Для подключения платы к смартфону в дальнейшем, необходимо сначала включить на нем точку доступа (2.4ГГц) и затем включить питание платы.</p>
+                    <p>При отсутствии внешней точки доступа смартфона плата переходит в режим с собственной точкой доступа.</p>
+                </div>
+            </div>
+        </section>
+
+
 
         <!-- Навигационные кнопки -->
         <div class="nav-buttons">

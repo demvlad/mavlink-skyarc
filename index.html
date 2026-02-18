@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="description">
-            <p><b>MAVLinkSkyArс:</b> Android приложение для сбора MAVLink телеметрии БВС и передачи данных в Государственную систему идентификации БВС
+            <p><b>MAVLinkSkyArс:</b> <i>Android</i> приложение для сбора <i>MAVLink</i> телеметрии БВС и передачи данных в <i>Государственную систему идентификации БВС</i>
                                 <a href="http://publication.pravo.gov.ru/document/0001202412030025">
                                   (ПП РФ №1701 30.11.2024)
                                 </a>
@@ -51,72 +51,31 @@
                 <p>Отображение параметров полета на экране, положения БВС и оператора на карте 🗺️</p>
             </div>
         </div>
-        <h1>📖 Общая информация</h1>
+        <div class="guide-header">
+            <h1>📖 ОБЩАЯ ИНФОРМАЦИЯ</h1>
+        </div>
         <div class="description">
             <p>Программа <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a> принимает полетные параметры по Wi-Fi на UDP порт 14550 по протоколу передачи полетных данных MAVLink и позволяет транслировать их в Государственную систему идентификации полетов БВС.</p>
             <p><u><b>Поддерживаются прошивки дронов</b></u>: <a href="http://www.betaflight.com/">Betaflight</a>, INAV, ArduPilot, PX4.</p>
-            <h3>Для получения информации от дрона может использоваться аппаратура управлния <a href="http://www.expresslrs.com/">ExpressLRS</a> в режимах:</h3>
+            <b>Для получения информации от дрона может использоваться аппаратура управлния <a href="http://www.expresslrs.com/">ExpressLRS</a> в режимах:</b>
             <ul>
                 <li><a href="https://www.expresslrs.org/software/mavlink/">Трансляция MAVLink телеметрии по Wi-Fi;</a></li>
                 <li><a href="https://www.expresslrs.org/software/backpack-telemetry/">Передача CRSF телеметрии по техноглогии ESP-NOW</a> с ретрансляцией ее в формат MAVLink Wi-Fi при помощи дополнительной <a href="https://github.com/demvlad/ESP-NOW-to-MAVLink-UDP-Bridge">платы ESP32.</a></li>
             </ul>
             <p>
                 В этих режимах аппаратура ExpressLRS получает телеметрию с квадрокоптера и раздает ее по WiFi по протоколу MAVLink на UDP порт 14550,
-                что позволяет подключать компьютерные программы <b>MissionPlanner</b>, <b>QGroundControl</b> (поддерживаемые специальными плагинами <a href="https://www.skyarc.ru/">"Небосвод"</a> для идентификации БВС)
-                и <i>Android</i> программу <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a>.
+                что позволяет подключать компьютерные программы <b>MissionPlanner</b>, <b>QGroundControl</b> (поддерживаемые специальными <a href="https://www.skyarc.ru/terms/simplify">плагинами "Небосвод"</a>)
+                и <i>Android</i> программу <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a>  для идентификации полета БВС.
             </p>
             <p>Также возможно использование других устройств, передающих MAVLink телеметрию по Wi-Fi.</p>
 
             <p>Передача телеметрии в Государственную систему идентификации БВС требует
                 <a href="https://www.skyarc.ru/"> авторизации в системе "Небосвод"</a> и наличия у БВС <i>регистрационного номера</i>.
             </p>
-            <p> Для работы приложения <b>MAVLinkSkyArc</b> необходима специальная настройка прошивки дрона и аппаратуры управления ExpressLRS для работы в режиме <a href="https://www.expresslrs.org/software/mavlink/"> MAVLink-ELRS</a>
-                или <a href="https://www.expresslrs.org/software/backpack-telemetry/">CRSF->ESP-NOW->MAVLink.</a>
+            <p> Для работы приложения <b>MAVLinkSkyArc</b> необходима <i>специальная настройка</i> прошивки дрона и аппаратуры управления ExpressLRS для работы в режиме <a href="#setup_mavlink_manual"> MAVLink-ELRS</a>
+                или <a href="#setup_crsf_manual">CRSF->ESP-NOW->MAVLink.</a>
             </p>
         </div>
-
-        <div class="description">
-            <h2>💡 Требования для режима MAVLink-ELRS</h2>
-            <p><u>Поддерживаются прошивки:</u></p>
-            <ul>
-                <li><a href="http://www.betaflight.com/">Betaflight</a>, начиная с версии <a href="https://github.com/betaflight/betaflight/releases">2025.12.1</a></li>
-                <li>INAV</li>
-                <li>ArduPilot</li>
-                <li>PX4</li>
-            </ul>
-            <p><u>Минимальная версия ExpressLRS</u>
-                <p>Transmitter/receiver firmware: 3.5.0</p>
-                <p>TX Backpack firmware: 1.5.0</p>
-            <p>Инструкция по настройке режима для прошивок <a href="http://www.betaflight.com/">Betaflight</a>, INAV, ArduPilot, PX4 приведена в <a href="https://www.expresslrs.org/software/mavlink/"> руководстве ExpressLRS.</a></p>
-            <p>Далее приведено полное описание настройки аппаратуры и прошивки <a href="http://www.betaflight.com/">Betaflight</a> для режима MAVLink-ELRS.</p>
-        </div>
-        <nav class="toc">
-            <h2 id="setup_mavlink_manual">📖 Настройка режима MAVLink-ELRS</h2>
-            <ul>
-                <li><a href="bf.html">1. Установка и настройка Betaflight</a></li>
-                <li><a href="elrs.html">2. Настройка ExpressLRS</a></li>
-                <li><a href="checking.html">3. Проверка работоспособности</a></li>
-            </ul>
-        </nav>
-
-        <div class="description">
-            <h2>💡 Требования для режима CRSF->ESP-NOW->MAVLink</h2>
-            <div class="warning">
-                <strong>⚠️ Внимание:</strong> В настоящее время только прошивка <a href="http://www.betaflight.com/">Betaflight</a> имеет расширенную (Extended GPS frame) информацию CRSF телеметрии, достаточную для системы идентификации полета БВС.
-                        И пока это реализовано только в его крайней "Developed" версии. В Release это ожидается в версии 2026.6. Текущий 2025.12 релиз Betaflight, прошивка INAV не могут быть использованы!
-            </div>
-            <p>Для ретрансляции CRSF ESP-NOW телеметрии от аппаратуры ELRS в Wi-Fi раздачу по протоколу MAVLink необходима <b>дополнительная плата ESP32</b> со специальным ПО.</p>
-            <p>Далее приведено полное описание настройки аппаратуры и прошивки <a href="http://www.betaflight.com/">Betaflight</a> для режима CRSF->ESP-NOW->MAVLink.</p>
-        </div>
-        <nav class="toc">
-            <h2 id="setup_crsf_manual">📖 Настройка режима CRSF->ESP-NOW->MAVLink</h2>
-            <ul>
-                <li><a href="bf_crsf.html">1. Прошивка и настройка Betaflight</a></li>
-                <li><a href="elrs_crsf.html">2. Настройка ExpressLRS</a></li>
-                <li><a href="esp32.html">3. Прошивка и настройка платы ESP32</a></li>
-                <li><a href="checking.html">4. Проверка работоспособности</a></li>
-            </ul>
-        </nav>
 
         <div class="guide-header">
             <h1>📖 ИНСТРУКЦИЯ ПО РАБОТЕ С ПРОГРАММОЙ MAVLinkSkyArc</h1>
@@ -155,31 +114,33 @@
             <div class="image-comparison">
                     <div>
                         <img src="images/notify_permission.jpg"
-                             class="guide-image image-25">
+                             class="guide-image">
                         <p class="image-caption">Разрешение уведомлений</p>
                     </div>
                     <div>
                         <img src="images/location_permission.jpg"
-                             class="guide-image image-25">
+                             class="guide-image">
                         <p class="image-caption">Разрешение Геолокации</p>
                     </div>
                     <div>
                         <img src="images/app_battery_find.jpg"
-                             class="guide-image image-25">
+                             class="guide-image">
                         <p class="image-caption">Запрет оптимизации батареи, шаг 1</p>
                     </div>
                     <div>
                         <img src="images/app_battery_off.jpg"
-                             class="guide-image image-25">
+                             class="guide-image">
                         <p class="image-caption">Запрет оптимизации батареи, шаг 2</p>
                     </div>
             </div>
         </div>
         <div class="warning">
-            <p>⚠️ Для надежной работы, в том числе и в фоновом режиме, отключите энергосбережение как в самой программе (запрашивается при первом запуске), так и в общих настройках Android!</p>
+            <p>⚠️ Для надежной работы, в том числе и в фоновом режиме, отключите оптимизацию батареи как для самой программы (запрашивается при первом запуске), так и в общих настройках Android!</p>
         </div>
         <div class="warning">
             <p>⚠️ Рекомендуется использование режима с подключением ELRS аппаратуры к точке доступа Wi-Fi на смартфоне.</p>
+        </div>
+        <div class="warning">
             <p>⚠️ Обязательно проверяйте стабильность приема данных телеметрии по Wi-Fi перед началом полета!</p>
         </div>
         </div>
@@ -187,9 +148,10 @@
             <div class="step">
                 <h3><span class="step-number">1</span>Запуск аппаратуры и программы</h3>
                 <ul>
-                    <li>Включите на смартфоне точку доступа Wi-Fi, настроенную для подключения к ней Backpack ExpressLRS</li>
+                    <li>Включите на смартфоне точку доступа Wi-Fi, настроенную для подключения к ней Backpack ExpressLRS (или платы ESP32 при использовании CRSF телеметрии)</li>
                     <li>Включите аппаратуру ExpressLRS</li>
-                    <li>Проверьте подключение аппаратуры к точке доступа Wi-Fi</li>
+                    <li>Включите питание платы ESP32 при использовании CRSF телеметрии</li>
+                    <li>Проверьте подключение аппаратуры к точке доступа Wi-Fi смартфона</li>
                     <li>Включите питание дрона</li>
                     <li>Запустите приложение MAVLinkSkyArc</li>
                 </ul>
@@ -199,7 +161,7 @@
             </div>
             <div class="step">
                 <h3><span class="step-number">2</span> Авторизация в системе "Небосвод"</h3>
-                <p>Перейдите на страницу "🔐 Авторизация" MAVLinkSkyArc и авторизируйтесь в системе "Небосвод"/</p>
+                <p>Перейдите на страницу "🔐 Авторизация" MAVLinkSkyArc и авторизируйтесь в системе "Небосвод"</p>
                 <p>При успехе, в строке состояния отобразятся символы 🔐✅ и программа автоматически перейдет на страницу "✈️ Полет".</p>
                 <div class="image-container">
                     <img src="images/authority.jpg"
@@ -224,25 +186,25 @@
                     <div>
                         <img src="images/system_not_ready.jpg"
                              alt="Полет"
-                             class="guide-image image-30">
+                             class="guide-image">
                         <p class="image-caption">Система не готова к работе</p>
                     </div>
                     <div>
                         <img src="images/system_ready.jpg"
                              alt="Полет"
-                             class="guide-image image-30">
+                             class="guide-image">
                         <p class="image-caption">Система готова к работе</p>
                     </div>
                     <div>
                         <img src="images/flight.jpg"
                              alt="Полет"
-                             class="guide-image image-30">
+                             class="guide-image">
                         <p class="image-caption">Полет разрешен</p>
                     </div>
                     <div>
                         <img src="images/flight_fault.jpg"
                              alt="Полет"
-                             class="guide-image image-30">
+                             class="guide-image">
                         <p class="image-caption">Отказ системы в процессе полета</p>
                     </div>
                 </div>
@@ -250,7 +212,7 @@
                     <strong>⚠️ Внимание:</strong> Включение/отключение передачи данных и переход в тестовый режим требуют дополнительного подтверждения на всплывающих диалоговых панелях.
                 </div>
                 <div class="warning">
-                    <strong>⚠️ Внимание:</strong>"Тестовый режим" предназначен только для проверки системы на земле. При этом данные отправляются на сервер с пометкой Тест. Полет в этом режиме запрещен.
+                    <strong>⚠️ Внимание:</strong> "Тестовый режим" предназначен только для проверки системы на земле. При этом данные отправляются на сервер с пометкой Тест. Полет в этом режиме запрещен.
                     При этом на кнопке управления отображается текст "✅Система исправна! 👇Нажми для тестовой⚠ трансляции!" и "📡Тестовая тансляция! 🛑Полет запрещен!"
                     <p>Во время полета включение "Тестового режима" заблокировано.</p>
                 </div>
@@ -292,6 +254,54 @@
 
         </section>
 
+        <div class="guide-header" id="setup_mavlink_manual">
+            <h1>📖 ИНСТРУКЦИЯ ПО НАСТРОЙКЕ РЕЖИМА MAVLink-ELRS</h1>
+        </div>
+        <div class="description">
+            <h2>💡 Требования для режима MAVLink-ELRS</h2>
+            <p><u>Поддерживаются прошивки:</u></p>
+            <ul>
+                <li><a href="http://www.betaflight.com/">Betaflight</a>, начиная с версии <a href="https://github.com/betaflight/betaflight/releases">2025.12.1</a></li>
+                <li>INAV</li>
+                <li>ArduPilot</li>
+                <li>PX4</li>
+            </ul>
+            <p><u>Минимальная версия ExpressLRS</u>
+                <p>Transmitter/receiver firmware: 3.5.0</p>
+                <p>TX Backpack firmware: 1.5.0</p>
+            <p>Инструкция по настройке режима для прошивок <a href="http://www.betaflight.com/">Betaflight</a>, INAV, ArduPilot, PX4 приведена в <a href="https://www.expresslrs.org/software/mavlink/"> руководстве ExpressLRS.</a></p>
+            <p>Далее приведено полное описание настройки аппаратуры и прошивки <a href="http://www.betaflight.com/">Betaflight</a> для режима MAVLink-ELRS.</p>
+        </div>
+        <nav class="toc">
+            <h2>🛠 Настройка режима MAVLink-ELRS</h2>
+            <ul>
+                <li><a href="bf.html">1. Установка и настройка Betaflight</a></li>
+                <li><a href="elrs.html">2. Настройка ExpressLRS</a></li>
+                <li><a href="checking.html">3. Проверка работоспособности</a></li>
+            </ul>
+        </nav>
+
+        <div class="guide-header"  id="setup_crsf_manual">
+            <h1>📖 ИНСТРУКЦИЯ ПО НАСТРОЙКЕ РЕЖИМА CRSF->ESP-NOW->MAVLink</h1>
+        </div>
+        <div class="description">
+            <h2>💡 Требования для режима CRSF->ESP-NOW->MAVLink</h2>
+            <div class="warning">
+                <strong>⚠️ Внимание:</strong> В настоящее время только прошивка <a href="http://www.betaflight.com/">Betaflight</a> имеет расширенную (Extended GPS frame) информацию CRSF телеметрии, достаточную для системы идентификации полета БВС.
+                        И пока это реализовано только в крайней "Developed" версии. В Release это ожидается в версии 2026.6. Текущий 2025.12 релиз Betaflight, а также другие firmware (INAV) не могут быть использованы!
+            </div>
+            <p>Для ретрансляции CRSF ESP-NOW телеметрии от аппаратуры ELRS в Wi-Fi раздачу по протоколу MAVLink необходима <b>дополнительная плата ESP32</b> со специальным ПО.</p>
+            <p>Далее приведено полное описание настройки аппаратуры и прошивки <a href="http://www.betaflight.com/">Betaflight</a> для режима CRSF->ESP-NOW->MAVLink.</p>
+        </div>
+        <nav class="toc">
+            <h2>🛠 Настройка режима CRSF->ESP-NOW->MAVLink</h2>
+            <ul>
+                <li><a href="bf_crsf.html">1. Прошивка и настройка Betaflight</a></li>
+                <li><a href="elrs_crsf.html">2. Настройка ExpressLRS</a></li>
+                <li><a href="esp32.html">3. Прошивка и настройка платы ESP32</a></li>
+                <li><a href="checking.html">4. Проверка работоспособности</a></li>
+            </ul>
+        </nav>
 
         <div class="footer">
             <p class="copyright">© Демидов В.В., 2026. Все права защищены.</p>
