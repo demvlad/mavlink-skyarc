@@ -25,15 +25,22 @@
             </div>
             <div class="step">
                 <h3><span class="step-number">2</span> Скачайте утилиту для прошивки платы ESP32</h3>
-                <p>Утилиту espflash для прошивки платы можно загрузить <a href="https://github.com/esp-rs/espflash/releases">здесь</a></p>
+                <p>Утилиту espflash для прошивки платы можно загрузить <a href="https://github.com/esp-rs/espflash/releases">здесь,</a> файл espflash-x86_64-pc-windows-msvc.zip для Windows</p>
             </div>
             <div class="step">
                 <h3><span class="step-number">3</span> Прошивка платы ESP32</h3>
-                <p>Установите драйвера для платы (CH340 в моем случае).</p>
-                <p>Подключите плату ESP32 к компьютеру. В Диспетчере устрйств найдите какой COM порт она использует.</p>
+                <p>Установите драйвера для платы (<a href="https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip">CP2102</a> или <a href="https://file.wch.cn/download/file?id=65">CH340</a>).</p>
+                <p>Подключите плату ESP32 к компьютеру.</p>
                 <p>Скопируте утилиту espflash и файл прошивки в одну директорию. Запустите командную строку cmd, перейдите в командной строке в этот директорий.</p>
-                <p>Залейте прошивку в плату командой: <i>espflash COMn файл</i></p>
-                <p>Где: <i>файл</i> - полное имя файла прошивки, <i>COMn</i> - <i>n</i> замените на номер порта в системе, например - <i>COM5</i>.</p>
+                <p>Залейте прошивку в плату командой: <i>espflash flash firmware.elf</i></p>
+                <p>где: <i>firmware.elf</i> - полное имя файла прошивки.</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/flash_firmware.jpg"
+                             class="guide-image">
+                        <p class="image-caption">Прошивка платы ESP32</p>
+                    </div>
+                </div>
             </div>
         </section>
         <section id="chapter2" class="chapter">
@@ -97,8 +104,6 @@
                 </div>
             </div>
         </section>
-
-
 
         <!-- Навигационные кнопки -->
         <div class="nav-buttons">
