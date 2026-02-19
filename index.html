@@ -17,7 +17,7 @@
         <h1>MAVLinkSkyArc</h1>
         <p class="tagline">Мост телеметрии MAVLink в Государственную систему идентификации БВС</p>
         <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc" class="nav-btn">Скачать MAVLinkSkyArc на RuStore</a>
-        <div class="contact-item">
+        <div class="contact-item" id="contact">
             <span class="contact-icon">📧</span>
             <div class="contact-info">
                   <div class="contact-label">Email для обратной связи</div>
@@ -110,32 +110,42 @@
                 Окошко уведомления показывает состояние программы и позволяет активировать ее после сворачивания. Завершение работы программы стандартное.
             </div>
             <div class="warning">
-            <strong>Внимание:</strong> ⚠️ Программа требует специальных разрешений, запрашиваемых при первом запуске: геолокация, выдача уведомлений и отключение энергосбережения.
-            <div class="image-comparison">
-                    <div>
-                        <img src="images/notify_permission.jpg"
-                             class="guide-image">
-                        <p class="image-caption">Разрешение уведомлений</p>
-                    </div>
-                    <div>
-                        <img src="images/location_permission.jpg"
-                             class="guide-image">
-                        <p class="image-caption">Разрешение Геолокации</p>
-                    </div>
-                    <div>
-                        <img src="images/app_battery_find.jpg"
-                             class="guide-image">
-                        <p class="image-caption">Запрет оптимизации батареи, шаг 1</p>
-                    </div>
-                    <div>
-                        <img src="images/app_battery_off.jpg"
-                             class="guide-image">
-                        <p class="image-caption">Запрет оптимизации батареи, шаг 2</p>
-                    </div>
+                <p>
+                    <strong>Внимание:</strong> ⚠️ Программа требует специальных разрешений, запрашиваемых при первом запуске: геолокация, выдача уведомлений и <b>отключение оптимизации батареи</b>.
+                </p>
+            
+                <p><b>Подтвердите разрешения</b></p>
+                <div class="image-comparison">
+                        <div>
+                            <img src="images/notify_permission.jpg"
+                                 class="guide-image">
+                            <p class="image-caption">Разрешение уведомлений</p>
+                        </div>
+                        <div>
+                            <img src="images/location_permission.jpg"
+                                 class="guide-image">
+                            <p class="image-caption">Разрешение Геолокации</p>
+                        </div>
+                </div>
+                <p><b>Отключите оптимизацию батареи для приложения</b></p>
+                <div class="image-comparison">
+                        <div>
+                            <img src="images/app_battery_find.jpg"
+                                 class="guide-image">
+                            <p class="image-caption">Запрет оптимизации батареи, шаг 1</p>
+                        </div>
+                        <div>
+                            <img src="images/app_battery_off.jpg"
+                                 class="guide-image">
+                            <p class="image-caption">Запрет оптимизации батареи, шаг 2</p>
+                        </div>
+                </div>
             </div>
         </div>
         <div class="warning">
-            <p>⚠️ Для надежной работы, в том числе и в фоновом режиме, отключите оптимизацию батареи как для самой программы (запрашивается при первом запуске), так и в общих настройках Android!</p>
+            <p id="battery-warning">⚠️ Для надежной работы, в том числе и в фоновом режиме, <b>отключите оптимизацию батареи</b> как <b>для самой программы</b> (запрашивается при первом запуске, <b>см. рисунки выше</b>), так и в <b>общих настройках Android</b>!</p>
+            <p>Вид общих настроек зависят от версии Android. Установите <b>Производительный режим!</b> Пример правильной настройки: <I>Настройки -> Батарея -> Режим использования батареи</I>-> <b>Производительный.</b></p>
+            <p>Косвенным признаком включенного режима энергосбережения является темная тема (с черным фоном) приложения MAVLinkSkyArc!</p>
         </div>
         <div class="warning">
             <p>⚠️ Рекомендуется использование режима с подключением ELRS аппаратуры к точке доступа Wi-Fi на смартфоне.</p>
@@ -143,7 +153,7 @@
         <div class="warning">
             <p>⚠️ Обязательно проверяйте стабильность приема данных телеметрии по Wi-Fi перед началом полета!</p>
         </div>
-        </div>
+
         <section id="chapter1" class="chapter">
             <div class="step">
                 <h3><span class="step-number">1</span>Запуск аппаратуры и программы</h3>
