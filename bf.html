@@ -77,12 +77,31 @@
             </div>
         </section>
 
+        <h2>🛠 Тонкая настройка Betaflight</h2>
         <div class="description">
             <p>Настройки Betaflight по умолчанию обеспечивают функционирование MAVLink.</p>
             <p>Проверка и более тонкая настройка, позволяющая снизить нагрузку на радиоканал телеметрии, требует использования приложения <a href="https://blackbox.betaflight.com">Betaflight Blackbox Explorer</a>,
-            установки отладочного режима логирования DEBUG_TELEMETRY_MAVLINK и команд CLI.</p>
+            установки отладочного режима логирования MAVLINK_TELEMETRY и команд CLI.</p>
+            <p><b>Betaflight позволяет настраивать частоты передачи пакетов MAVLink телеметрии при помощи CLI команд:</b></p>
+            <ul>
+                <li> <i>mavlink_pos_rate</i> - частота передачи GPS параметров (по умолчанию - 2Hz)</li>
+                <li> <i>mavlink_rc_chan_rate</i> - частота передачи сигналов управления (RC) (по умолчанию - 1Hz)</li>
+                <li> <i>mavlink_ext_status_rate</i> - частота передачи статуса состояния (по умолчанию - 2Hz)</li>
+                <li> <i>mavlink_extra1_rate</i> -частота передачи углового положения (по умолчанию - 2Hz)</li>
+                <li> <i>mavlink_extra2_rate</i> - Heartbeat pack + VFR HUD (по умолчанию - 2Hz)</li>
+                <li> <i>mavlink_extra3_rate</i> - частота передачи состояния батареи (по умолчанию - 1Hz)</li>
+            </ul>
+            <p><b>Для идентификации полета БВС целесообразно изменить настройки с помощью следующих команд CLI:</b></p>
+            <ul>
+                <li> <i>mavlink_pos_rate 3</li>
+                <li> <i>mavlink_rc_chan_rate 0</i></li>
+                <li> <i>mavlink_ext_status_rate 0</i></li>
+                <li> <i>mavlink_extra1_rate 0</i></li>
+                <li> <i>mavlink_extra2_rate 1</i></li>
+                <li> <i>mavlink_extra3_rate 1</i></li>
+            </ul>
+            <p>Данные настройки отключают передачу ненужных пакетов и повышают частоту передачи GPS параметров.</p>
         </div>
-
         <!-- Навигационные кнопки -->
         <div class="nav-buttons">
             <a href="index.html#setup_mavlink_manual" class="nav-btn">На главную страницу</a>
