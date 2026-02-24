@@ -326,6 +326,11 @@
             height-auto;
         }
 
+        .image-75 {
+            width: 75%;
+            height-auto;
+        }
+
         /* Подсказки и примечания */
         .tip {
             background: #e8f4fd;
