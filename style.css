@@ -243,6 +243,7 @@
             background: #f8fafc;
             border-radius: 6px;
             border-left: 3px solid #4a6ee0;
+            text-align: left;
         }
 
         .step h3 {
@@ -283,6 +284,7 @@
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             border: 1px solid #ddd;
             transition: transform 0.3s ease;
+            text-align: center;
         }
 
         .guide-image:hover {
@@ -301,8 +303,8 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            justify-content: center;
             margin: 25px 0;
+            text-align: center;
         }
 
         .image-comparison div {
@@ -346,6 +348,7 @@
             padding: 15px;
             margin: 20px 0;
             border-radius: 0 6px 6px 0;
+            text-align: left;
         }
 
         /* Кнопки навигации */
