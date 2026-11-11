@@ -30,6 +30,7 @@
                 <p>Выберите последнюю Release версию firmware.</p>
                 <p>Укажите необходимые опции.</p>
                 <p>Выберите MAVLINK в качестве Radio Protocol и Telemetry Protocol.</p>
+                <p>Если в будущем необходим CRSF протокол с возможностью переключения между MAVLink и CRSF то в поле ввода 'Custom Defines' впишите: <i>USE_SERIALRX_CRSF  USE_TELEMETRY_CRSF</i>.</p>
                 <p>Загрузите firmware (online).</p>
                 <p>Прошейте firmware.</p>
                 <div class="image-container">
@@ -39,9 +40,38 @@
                     <p class="image-caption">Рис. 1:Прошивка Beteflight firmware</p>
                 </div>
             </div>
-
             <div class="step">
-                <h3><span class="step-number">3</span> Настройка порта UART</h3>
+                <h3><span class="step-number">3</span> Настройка режима MAVLink в крайней версии (2026.12) Betaflight App (конфигураторе)</h3>
+                <p>Войдите в конфигуратор после прошивки BF firmware.</p>
+                <p>Перейдите на закладку Reseiver.</p>
+                <p>Для порта ELRS-приемника включите нужный режим (Serial-Rx). Установите порт подключения к FC. Установите <b>MAVLINK</b> в качестве <i>'Serial Receiver Provider'</i>. </p>
+                <p>Включите телеметрию <i>Telemetry output</i></p>
+                <p>Если при прошивке также был указан CRSF протокол то легко можно переключиться на него при необходимости выбором CRSF в <i>'Serial Receiver Provider'</i>.</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/bf_2026.jpg"
+                             alt="Настройка режима MAVLink"
+                             class="guide-image image-50">
+                        <p class="image-caption">Рис. 2: Настройка MAVLink</p>
+                    </div>
+                </div>
+            </div>
+            <h3> Настройка режима MAVLink в ранней версии (2025.12, 2026.6) конфигуратора</h3>
+            <div class="step">
+                <h3><span class="step-number">1</span> Настройка приемника</h3>
+                <p>Перейдите на закладку Receiver.</p>
+                <p>Установите Receiver mode - Serial, Serial receiver provider - MAVLINK, включите телеметрию</p>
+                <div class="image-container">
+                    <div>
+                        <img src="images/bf_receiver.jpg"
+                             alt="Настройка приемника"
+                             class="guide-image image-50">
+                        <p class="image-caption">Рис. 2: Настройка приемника</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <h3><span class="step-number">2</span> Настройка порта UART</h3>
                 <p>Войдите в конфигуратор после прошивки BF firmware.</p>
                 <p>Перейдите на закладку Ports.</p>
                 <p>Для порта ELRS-приемника включите режим Serial-Rx и установите MAVLINK в качестве Telemetry Output</p>
@@ -50,32 +80,26 @@
                         <img src="images/bf_port.jpg"
                              alt="Настройка порта"
                              class="guide-image image-50">
-                        <p class="image-caption">Рис. 2: Настройка порта</p>
+                        <p class="image-caption">Рис. 3: Настройка порта</p>
                     </div>
                 </div>
                 <div class="tip">
                     <strong>💡 Совет:</strong> Оставьте скорость передачи телеметрии AUTO.
                 </div>
             </div>
-
-            <div class="step">
-                <h3><span class="step-number">4</span> Настройка приемника</h3>
-                <p>Перейдите на закладку Receiver.</p>
-                <p>Установите Receiver mode - Serial, Serial receiver provider - MAVLINK, включите телеметрию</p>
-                <div class="image-container">
-                    <div>
-                        <img src="images/bf_receiver.jpg"
-                             alt="Настройка приемника"
-                             class="guide-image image-50">
-                        <p class="image-caption">Рис. 3: Настройка приемника</p>
-                    </div>
-                </div>
-            </div>
             <div class="warning">
-                    <strong>⚠️ Внимание:</strong> В текущей реализации MAVLink режима ExpressLRS, частота обновления управляющих сигналов (RC) по результатам тестов составляет около 100Hz (отличается от частоты, задаваемой в настройках ELRS пульта управления - 150, 250Hz,...  ).
-                    Это нужно учитывать при выборе пресэтов (настройки фильтров) канала управления в Betaflight конфигураторе.
+                <strong>⚠️ Внимание:</strong> Если при прошивке также был указан CRSF протокол, то будьте внимательны при переключении между режимами.
+                Конфигурация с CRSF провайдером и телеметрией на UART является недопустимой и настройки всех портов UART будут сброшены!
+                Поэтому сначала изменяйте Serial receiver provider, а затем настройку порта UART на закладке Ports.
             </div>
         </section>
+        <div class="warning">
+                <strong>⚠️ Внимание:</strong> В текущей реализации MAVLink режима ExpressLRS, частота обновления управляющих сигналов (RC) по результатам тестов составляет около 100Hz (отличается от частоты, задаваемой в настройках ELRS пульта управления - 150, 250Hz,...  ).
+                Это нужно учитывать при выборе пресэтов (настройки фильтров) канала управления в Betaflight конфигураторе.
+        </div>
+        <h3>Betaflight 2026 имеет широкую поддержку MAVLink для использования в наземных станциях (GCS) MissionPlanner и QGroundControl!
+            С их помощью возможно задание маршрута полета, оперативное изменение частоты передачи пакетов MAVLink и пр.
+        </h3>
 
         <h2>🛠 Тонкая настройка Betaflight</h2>
         <div class="description">
