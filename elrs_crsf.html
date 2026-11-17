@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструкция по настройке ExpressLRS</title>
+    <title>Инструкция по настройке ExpressLRS в режиме трансляции CRSF по WI-FI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,12 +12,23 @@
         <header class="guide-header">
             <h1>🛠 Настройка аппаратуры ExpressLRS</h1>
         </header>
+        <div class="warning">
+                <strong>⚠️ Внимание:</strong> трансляция CRSF телеметрии по WI-FI является
+                <a href="https://github.com/ExpressLRS/Backpack/pull/211">новой возможностью ExpressLRS</a> и поддерживается в <b>прошивках Backpack версии 1.5.6 и выше.</b>
+                Данная функция является экспериментальной. Используйте ее осторожно после тщательной проверки.
+        </div>
+        <p>В этом режиме связь с дроном осуществляется с помощью обычного CRSF протокола.</p>
+        <p>Необходимо только включить трансляцию телеметрии по WI-FI в настройке Backpack.</p>
+        <div class="warning">
+            <strong>⚠️ Внимание:</strong> <p>Рекомендуется работа ExpressLRS Backpack в режиме подключения к внешней точке доступа WIFI на смартфоне. Это обеспечивает надежное наличие сети интернет и передачу телеметрии.</p>
+            <p>Использование Backpack в качестве точки доступа WIFI с подключением к ней смартфона возможна, но требует проверки наличия интернет, стабильности приема телеметрии по WIFI и ее отправки через интернет!</p>
+        </div>
         <!-- Глава 1 -->
         <section id="chapter1" class="chapter">
             <div class="step">
                 <h3><span class="step-number">1</span>Включение ELRS TX</h3>
                 <p>Включите пульт ELRS</p>
-                <p>Войдите в меню ELRS setup</p>
+                <p>Войдите в ELRS setup</p>
             </div>
 
             <div class="step">

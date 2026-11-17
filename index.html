@@ -72,17 +72,20 @@
             <p>
                 В первых двух режимах аппаратура ExpressLRS получает телеметрию с квадрокоптера и раздает ее по WiFi по протоколу MAVLink на UDP порт 14550,
                 что позволяет подключать компьютерные программы <b>MissionPlanner</b>, <b>QGroundControl</b> (поддерживаемые специальными <a href="https://www.skyarc.ru/terms/simplify">плагинами "Небосвод"</a>)
-                и <i>Android</i> программу <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a>  для идентификации полета БВС.                
+                и <i>Android</i> программу <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a>  для идентификации полета БВС.
             </p>
             <p>
                 Программа <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a> начиная с версии <i>2.0.0</i> позволяет также читать по Wi-Fi оба формата - MAVLink и CRSF.
             </p>
-            <p>Также возможно использование других устройств, передающих MAVLink телеметрию по Wi-Fi.</p>
+            <p>
+                Программа <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a> начиная с версии <i>1.3.0</i> наряду с MAVLink позволяет читать по Wi-Fi CRSF пакеты, транслируемые аппаратурой ExpressLRS.
+            </p>
+            <p>Также возможно использование других устройств, передающих телеметрию по Wi-Fi.</p>
 
             <p>Передача телеметрии в Государственную систему идентификации БВС требует
                 <a href="https://www.skyarc.ru/"> авторизации в системе "Небосвод"</a> и наличия у БВС <i>регистрационного номера</i>.
             </p>
-            <p> Для работы приложения <b>MAVLinkSkyArc</b> необходима <i>специальная настройка</i> прошивки дрона и аппаратуры управления ExpressLRS для работы в режиме <a href="#setup_mavlink_manual"> MAVLink-ELRS,</a>
+            <p> Для работы приложения <b>MAVLinkSkyArc</b> необходима <i>специальная настройка</i> прошивки дрона и аппаратуры управления ExpressLRS для работы в режимах <a href="#setup_mavlink_manual"> MAVLink-ELRS,</a>
                 <a href="#setup_espnow_manual">CRSF->ESP-NOW->MAVLink</a> или <a href="#setup_crsf_manual">CRSF-WiFi</a>
             </p>
         </div>
@@ -373,8 +376,9 @@
         </div>
         <div class="description">
             <h2>💡 Требования для режима CRSF</h2>
-            <p>Для трансляции телеметрии от аппаратуры ELRS в Wi-Fi раздачу по протоколу CRSF необходима прошивка Backpack ELRS версии 1.5.6 и выше</p>            
-            <p>Прошивка БВС использует стандартный CRSF режим.</p>            
+            <p>Для трансляции телеметрии от аппаратуры ELRS в <a href="https://github.com/ExpressLRS/Backpack/pull/211">Wi-Fi раздачу по протоколу CRSF необходима прошивка Backpack ELRS версии 1.5.6 и выше</a></p>
+            <p><i>Данная функция явдяется экспериментальной.</i></p>
+            <p>Прошивка БВС использует стандартный CRSF режим.</p>
         </div>
         <nav class="toc">
             <h2>🛠 Настройка режима CRSF->Wi-Fi</h2>
