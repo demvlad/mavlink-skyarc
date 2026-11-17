@@ -67,19 +67,23 @@
             <ul>
                 <li><a href="https://www.expresslrs.org/software/mavlink/">Трансляция MAVLink телеметрии по Wi-Fi;</a></li>
                 <li><a href="https://www.expresslrs.org/software/backpack-telemetry/">Передача CRSF телеметрии по техноглогии ESP-NOW</a> с ретрансляцией ее в формат MAVLink Wi-Fi при помощи дополнительной <a href="https://github.com/demvlad/ESPNow-to-MAVLink-UDP-Bridge">платы ESP32.</a></li>
+                <li><a href="https://github.com/ExpressLRS/Backpack/pull/211">Передача CRSF телеметрии по Wi-Fi <b>(прошивка Backpack версии 1.5.6 и выше)</b> </a> </li>
             </ul>
             <p>
-                В этих режимах аппаратура ExpressLRS получает телеметрию с квадрокоптера и раздает ее по WiFi по протоколу MAVLink на UDP порт 14550,
+                В первых двух режимах аппаратура ExpressLRS получает телеметрию с квадрокоптера и раздает ее по WiFi по протоколу MAVLink на UDP порт 14550,
                 что позволяет подключать компьютерные программы <b>MissionPlanner</b>, <b>QGroundControl</b> (поддерживаемые специальными <a href="https://www.skyarc.ru/terms/simplify">плагинами "Небосвод"</a>)
-                и <i>Android</i> программу <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a>  для идентификации полета БВС.
+                и <i>Android</i> программу <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a>  для идентификации полета БВС.                
+            </p>
+            <p>
+                Программа <a href="https://www.rustore.ru/catalog/app/ru.demidov.mavlink_skyarc"><b>MAVLinkSkyArc</b></a> начиная с версии <i>2.0.0</i> позволяет также читать по Wi-Fi оба формата - MAVLink и CRSF.
             </p>
             <p>Также возможно использование других устройств, передающих MAVLink телеметрию по Wi-Fi.</p>
 
             <p>Передача телеметрии в Государственную систему идентификации БВС требует
                 <a href="https://www.skyarc.ru/"> авторизации в системе "Небосвод"</a> и наличия у БВС <i>регистрационного номера</i>.
             </p>
-            <p> Для работы приложения <b>MAVLinkSkyArc</b> необходима <i>специальная настройка</i> прошивки дрона и аппаратуры управления ExpressLRS для работы в режиме <a href="#setup_mavlink_manual"> MAVLink-ELRS</a>
-                или <a href="#setup_crsf_manual">CRSF->ESP-NOW->MAVLink.</a>
+            <p> Для работы приложения <b>MAVLinkSkyArc</b> необходима <i>специальная настройка</i> прошивки дрона и аппаратуры управления ExpressLRS для работы в режиме <a href="#setup_mavlink_manual"> MAVLink-ELRS,</a>
+                <a href="#setup_espnow_manual">CRSF->ESP-NOW->MAVLink</a> или <a href="#setup_crsf_manual">CRSF-WiFi</a>
             </p>
         </div>
 
@@ -347,15 +351,11 @@
             </ul>
         </nav>
 
-        <div class="guide-header"  id="setup_crsf_manual">
+        <div class="guide-header"  id="setup_espnow_manual">
             <h1>📖 ИНСТРУКЦИЯ ПО НАСТРОЙКЕ РЕЖИМА CRSF->ESP-NOW->MAVLink</h1>
         </div>
         <div class="description">
             <h2>💡 Требования для режима CRSF->ESP-NOW->MAVLink</h2>
-            <div class="warning">
-                <strong>⚠️ Внимание:</strong> В настоящее время только <b>Developed 2026.6.0-alpha (pre-release) версия Betaflight</b> имеет расширенную (Extended GPS frame) информацию CRSF телеметрии, достаточную для системы идентификации полета БВС.
-                        Текущий 2025.12 релиз Betaflight, а также другие firmware (INAV) не могут быть использованы! Эти прошивки передают по CRSF телеметрии относительную (точки старта) баро высоту, вместо абсолютной GPS, что НЕ ДОПУСТИМО для системы идентификации полета БВС!
-            </div>
             <p>Для ретрансляции CRSF ESP-NOW телеметрии от аппаратуры ELRS в Wi-Fi раздачу по протоколу MAVLink необходима <b>дополнительная плата ESP32</b> со специальным ПО.</p>
             <p>Далее приведено полное описание настройки аппаратуры и прошивки <a href="http://www.betaflight.com/">Betaflight</a> для режима CRSF->ESP-NOW->MAVLink.</p>
         </div>
@@ -363,9 +363,24 @@
             <h2>🛠 Настройка режима CRSF->ESP-NOW->MAVLink</h2>
             <ul>
                 <li><a href="bf_crsf.html">1. Прошивка и настройка Betaflight</a></li>
-                <li><a href="elrs_crsf.html">2. Настройка ExpressLRS</a></li>
+                <li><a href="elrs_espnow.html">2. Настройка ExpressLRS</a></li>
                 <li><a href="esp32.html">3. Прошивка и настройка платы ESP32</a></li>
                 <li><a href="checking.html">4. Проверка работоспособности</a></li>
+            </ul>
+        </nav>
+        <div class="guide-header"  id="setup_crsf_manual">
+            <h1>📖 ИНСТРУКЦИЯ ПО НАСТРОЙКЕ РЕЖИМА CRSF-WiFi</h1>
+        </div>
+        <div class="description">
+            <h2>💡 Требования для режима CRSF</h2>
+            <p>Для трансляции телеметрии от аппаратуры ELRS в Wi-Fi раздачу по протоколу CRSF необходима прошивка Backpack ELRS версии 1.5.6 и выше</p>            
+            <p>Прошивка БВС использует стандартный CRSF режим.</p>            
+        </div>
+        <nav class="toc">
+            <h2>🛠 Настройка режима CRSF->Wi-Fi</h2>
+            <ul>
+                <li><a href="elrs_crsf.html">1. Настройка ExpressLRS</a></li>
+                <li><a href="checking.html">2. Проверка работоспособности</a></li>
             </ul>
         </nav>
 
